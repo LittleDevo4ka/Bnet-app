@@ -16,6 +16,7 @@
         <item name="colorControlActivated">@color/white</item>
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlHighlight">@color/white</item>
+        <item name="android:colorEdgeEffect">@color/top_background_color</item>
     </style>
 
 </resources>

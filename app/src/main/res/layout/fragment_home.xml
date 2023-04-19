@@ -52,15 +52,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/drug_card"
-
-
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
             android:clipToPadding="false"
+
+
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="?attr/actionBarSize"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

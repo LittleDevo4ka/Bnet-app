@@ -29,8 +29,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application), R
 
     private var lastSearchQuery: String = ""
 
+    private var singItemId: Int = -1
+    private val singleDrugMutable: MutableStateFlow<DrugsItem?> = MutableStateFlow(null)
+    val singleDrugState = singleDrugMutable.asStateFlow()
+
     fun updateDrugs(searchQuery: String) {
         lastPage = false
+        pageNum = 1
         lastSearchQuery = searchQuery
         if (searchQuery.isEmpty()) {
             repository.updateDrugs(searchQuery, 0)
@@ -40,6 +45,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application), R
     }
 
     fun loadNextPage() {
+        println(pageNum)
         if (!lastPage) {
             repository.updateDrugs(lastSearchQuery, pageNum)
             pageNum++
@@ -56,6 +62,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application), R
 
     override fun setDrugs(data: List<DrugsItem>?, code: Int) {
         if (data != null) {
+            singItemId = -1
             mutableDrugs = data as MutableList<DrugsItem>
             viewModelScope.launch(Dispatchers.IO) {
                 drugsMutable.emit(mutableDrugs.toList())
@@ -74,6 +81,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application), R
         viewModelScope.launch(Dispatchers.IO) {
             drugsMutable.emit(mutableDrugs.toList())
         }
+    }
+
+    fun setSingItemId(id: Int) {
+        singleDrugMutable.value = drugsMutable.value[id]
     }
 
 

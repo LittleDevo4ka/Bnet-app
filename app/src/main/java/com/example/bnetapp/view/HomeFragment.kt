@@ -13,6 +13,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bnetapp.R
@@ -42,8 +43,6 @@ class HomeFragment : Fragment(), DrugsRecyclerItem.OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         binding.searchEditText.visibility = View.GONE
-        binding.topAppBarHome.setNavigationIconTint(ContextCompat.getColor(requireContext(),
-            R.color.top_background_color))
 
         binding.topAppBarHome.setOnMenuItemClickListener {
             when (it.itemId) {
@@ -119,7 +118,8 @@ class HomeFragment : Fragment(), DrugsRecyclerItem.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-
+        viewModel.setSingItemId(position)
+        findNavController().navigate(R.id.action_homeFragment_to_singleCardFragment)
     }
 
     override fun uploadNewPage() {
