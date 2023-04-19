@@ -83,7 +83,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application), R
     }
 
     fun setSingItemId(id: Int) {
+
         singleDrugMutable.value = drugsMutable.value[id]
+
+        mutableDrugs.clear()
+        viewModelScope.launch(Dispatchers.IO) {
+            drugsMutable.emit(mutableDrugs.toList())
+        }
     }
 
 
