@@ -26,7 +26,7 @@
 
             app:menu="@menu/top_app_bar"
             app:navigationIcon="@drawable/ic_arrow_back_24"
-            android:background="@color/top_background_color"
+            android:background="@color/top_bar_background_color"
             app:titleTextColor="@color/white" >
 
             <EditText

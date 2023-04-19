@@ -45,7 +45,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application), R
     }
 
     fun loadNextPage() {
-        println(pageNum)
         if (!lastPage) {
             repository.updateDrugs(lastSearchQuery, pageNum)
             pageNum++

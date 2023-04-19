@@ -24,7 +24,7 @@
                 android:layout_height="?attr/actionBarSize"
 
                 app:navigationIcon="@drawable/ic_arrow_back_24"
-                android:background="@color/top_background_color" />
+                android:background="@color/top_bar_background_color" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
